@@ -9,7 +9,7 @@ class Employee {
     }// Creating a class for employeee and their properties
   
     getDetails() {
-      return(`Employee:${this.name}, ID: ${this.id}, Department: S{this.department}, Salary:${this.salary}`);
+      return(`Employee:${this.name}, ID: ${this.id}, Department: ${this.department}, Salary:${this.salary}`);
     }// Including a "getDetails()" method for employee's properties
 
   calculateAnnualSalary() {
@@ -51,15 +51,19 @@ class Company {
     constructor(name) {
       this.name = name;
       this.employees = [];
-};
+}
   
     addEmployee(employee) {
       this.employees.push(employee);
 }
   listEmployees() {
     this.employees.forEach(employee => console.log(employee.getDetails()));
+    
+}   //Task 4- Implementing a Payroll System
+calculateTotalPayroll() { return this.employees.reduce((total,employee) => total + employee.calculateAnnualSalary(),0);
     }
 }
+
 const company = new Company("TechCorp");
 company.addEmployee(emp1);
 company.addEmployee(mgr1);
@@ -67,4 +71,6 @@ company.listEmployees();
 // Expected output:
 // "Employee: Alice Johnson, ID: 101, Department: Sales, Salary: $5000"
 // "Manager: John Smith, ID: 201, Department: IT, Salary: $8000, Team Size: 5"
+console.log(company.calculateTotalPayroll()); 
+// Expected output: 165600 (assuming emp1 and mgr1 salaries)
 
